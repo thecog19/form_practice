@@ -1,5 +1,6 @@
 # assignment_association_practice
 Just associates associatin'...
 
-Sampson Crowley<br>
-Pramod Jacob<br>
+[Sampson Crowley](https://github.com/SampsonCrowley)
+
+[Pramod Jacob](https://github.com/domarp-j)
