@@ -3,35 +3,35 @@
 # ActiveRecord::Base.logger = Logger.new(STDOUT)
 
 # extend Hirb::Console
-
-puts "*********************************************************"
-puts "NUM 1 (USERS)"
-puts "*********************************************************"
-puts Hirb::Helpers::AutoTable.render User.all
-
-3.times { puts }
-puts "*********************************************************"
-puts "NUM 1 (COMMENTS)"
-puts "*********************************************************"
-puts Hirb::Helpers::AutoTable.render Comment.all
-
-3.times { puts }
-puts "*********************************************************"
-puts "NUM 1 (POSTS)"
-puts "*********************************************************"
-puts Hirb::Helpers::AutoTable.render Post.all
-
-3.times { puts }
-puts "*********************************************************"
-puts "NUM 1 (CATEGORIES)"
-puts "*********************************************************"
-puts Hirb::Helpers::AutoTable.render Category.all
-
-3.times { puts }
-puts "*********************************************************"
-puts "NUM 1 (TAGS)"
-puts "*********************************************************"
-puts Hirb::Helpers::AutoTable.render Tag.all
+#
+# puts "*********************************************************"
+# puts "NUM 1 (USERS)"
+# puts "*********************************************************"
+# puts Hirb::Helpers::AutoTable.render User.all
+#
+# 3.times { puts }
+# puts "*********************************************************"
+# puts "NUM 1 (COMMENTS)"
+# puts "*********************************************************"
+# puts Hirb::Helpers::AutoTable.render Comment.all
+#
+# 3.times { puts }
+# puts "*********************************************************"
+# puts "NUM 1 (POSTS)"
+# puts "*********************************************************"
+# puts Hirb::Helpers::AutoTable.render Post.all
+#
+# 3.times { puts }
+# puts "*********************************************************"
+# puts "NUM 1 (CATEGORIES)"
+# puts "*********************************************************"
+# puts Hirb::Helpers::AutoTable.render Category.all
+#
+# 3.times { puts }
+# puts "*********************************************************"
+# puts "NUM 1 (TAGS)"
+# puts "*********************************************************"
+# puts Hirb::Helpers::AutoTable.render Tag.all
 
 3.times { puts }
 puts "*********************************************************"
@@ -63,7 +63,7 @@ puts Hirb::Helpers::AutoTable.render post
 
 3.times { puts }
 puts "*********************************************************"
-puts "NUM 5 (REASSIGN COMMENTS TO USER)"
+puts "NUM 5 (REASSIGN FIRST & SECOND COMMENTS TO FIRST USER)"
 puts "*********************************************************"
 puts "Before..."
 puts Hirb::Helpers::AutoTable.render User.first.authored_comments
@@ -93,7 +93,13 @@ puts Hirb::Helpers::AutoTable.render Comment.all.sample.parent_post
 puts "*********************************************************"
 puts "NUM 9 (REMOVING FIRST POST FROM RANDOM CATEGORY)"
 puts "*********************************************************"
-puts Hirb::Helpers::AutoTable.render Category.all.sample.posts.first.destroy
+category = Category.all.sample
+puts "Before..."
+puts Hirb::Helpers::AutoTable.render category.posts
+category.posts.first.destroy
+reload!
+puts "After..."
+puts Hirb::Helpers::AutoTable.render category.posts
 
 3.times { puts }
 puts "*********************************************************"
