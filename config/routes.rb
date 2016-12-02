@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :users, :only => [:new, :edit, :show, :index]
-  root 'users#new'
+  resources :posts, :only => [:new, :edit, :show, :index, :create]
+  root 'posts#new'
 
 end

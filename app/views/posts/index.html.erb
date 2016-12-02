@@ -1,0 +1,7 @@
+<% @post.each do |post| %>
+
+<p> <%= post.title %> <p>
+<p> <%= post.body %> <p>
+<%=link_to "edit post", edit_post_path(post.id)%>
+
+<% end %>
