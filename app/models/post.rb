@@ -8,4 +8,6 @@ class Post < ApplicationRecord
 
   has_many :post_taggings, class_name: "PostsTag", dependent: :destroy
   has_many :tags, through: :post_taggings
+
+  accepts_nested_attributes_for :comments
 end

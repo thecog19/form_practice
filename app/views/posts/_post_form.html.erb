@@ -1,0 +1,30 @@
+<%= form_for @post do |form_builder| %>
+  <%= form_builder.label :title %>
+  <%= form_builder.text_field :title %><br>
+  <%= form_builder.label :body %>
+  <%= form_builder.text_field :body %>
+  <br>
+  <%= form_builder.collection_check_boxes :tag_ids, Tag.all, :id, :name  %>
+  <br><br>
+  <%= form_builder.collection_radio_buttons :category_id, Category.all, :id, :name  %>
+  <br> <br>
+  <%= form_builder.collection_select :category_id, Category.all, :id, :name,{include_blank: true},class: "green", id: "foobar"  %>
+  <br><br>
+
+  <%= form_builder.collection_select :tag_ids, Tag.all, :id, :name,{ },  multiple: true  %>
+
+  <br><br>
+
+  <%= form_builder.fields_for :comments, Comment.new do |comment_field| %>
+    <%= comment_field.label :body, 'Comment' %>
+    <%= comment_field.text_field :body %>
+  <% end %>
+
+  <%= form_builder.submit "Post!" %>
+<% end %>
+
+<!-- <br><br>
+
+<%= form_tag @post, :method => "post" do%>
+  <%= select_tag(:category_id, '<option value="1">yr</option><option value="2">vice</option><option value="3">hashtag</option><option value="4">Yuccie</option><option value="5">XOXO</option>'.html_safe ) %>
+<% end %> -->
