@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :posts, :only => [:new, :edit, :show, :index, :create]
+  resources :posts, :except => [:destroy]
   root 'posts#new'
 
 end

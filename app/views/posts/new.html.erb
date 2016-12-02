@@ -9,7 +9,11 @@
   <br><br>
   <%= form_builder.collection_radio_buttons :category_id, Category.all, :id, :name  %>
   <br> <br>
-  <%= form_builder.collection_select :category_id, Category.all, :id, :name  %>
+  <%= form_builder.collection_select :category_id, Category.all, :id, :name,{include_blank: true},class: "green", id: "foobar"  %>
+  <br><br>
+
+  <%= form_builder.collection_select :tag_ids, Tag.all, :id, :name,{ },  multiple: true  %>
+
   <br><br>
   <%= form_builder.submit "Post!" %>
 <% end %>
