@@ -17,6 +17,7 @@ class PostsController < ApplicationController
 
   def update
    @post = Post.find(params[:id])
+   @comments = @post.comments
    if @post.update(strong_params) #what does if @post = Post.update(strong_params) do
     redirect_to @post
    else
@@ -26,10 +27,11 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(strong_params)
+    @comments = @post.comments
     if @post.save
-     redirect_to "root"
-   else
-    render "new"
+     redirect_to @post
+    else
+      render "new"
     end
   end
 
@@ -40,7 +42,7 @@ class PostsController < ApplicationController
       :body,
       :category_id,
       :id,
-      { :comments_attributes => [:body] },
+      { :comments_attributes => [:body, :id, :_destroy] },
       :tag_ids => []
       )
   end

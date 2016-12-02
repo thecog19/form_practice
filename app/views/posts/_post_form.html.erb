@@ -8,23 +8,35 @@
   <br><br>
   <%= form_builder.collection_radio_buttons :category_id, Category.all, :id, :name  %>
   <br> <br>
-  <%= form_builder.collection_select :category_id, Category.all, :id, :name,{include_blank: true},class: "green", id: "foobar"  %>
+  <%# form_builder.collection_select :category_id, Category.all, :id, :name,{include_blank: true},class: "green", id: "foobar"  %>
   <br><br>
 
-  <%= form_builder.collection_select :tag_ids, Tag.all, :id, :name,{ },  multiple: true  %>
+  <%# form_builder.collection_select :tag_ids, Tag.all, :id, :name,{ },  multiple: true  %>
 
   <br><br>
+
+  <%= form_builder.fields_for :comments, @comments do |comment_field| %>
+    <br>
+    <%= comment_field.label :body, 'Comment' %>
+    <%= comment_field.text_field :body %>
+    <% if comment_field.object.persisted? %>
+     <%= comment_field.label :_destroy, "Delete Address?" %>
+     <%= comment_field.check_box :_destroy %>
+   <% end %>
+  <% end %>
 
   <%= form_builder.fields_for :comments, Comment.new do |comment_field| %>
+    <br>
     <%= comment_field.label :body, 'Comment' %>
     <%= comment_field.text_field :body %>
   <% end %>
 
+  <br>
   <%= form_builder.submit "Post!" %>
 <% end %>
 
 <!-- <br><br>
 
-<%= form_tag @post, :method => "post" do%>
-  <%= select_tag(:category_id, '<option value="1">yr</option><option value="2">vice</option><option value="3">hashtag</option><option value="4">Yuccie</option><option value="5">XOXO</option>'.html_safe ) %>
-<% end %> -->
+<%# form_tag @post, :method => "post" do%>
+  <%# select_tag(:category_id, '<option value="1">yr</option><option value="2">vice</option><option value="3">hashtag</option><option value="4">Yuccie</option><option value="5">XOXO</option>'.html_safe ) %>
+<%# end %> -->
